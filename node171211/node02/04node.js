@@ -6,6 +6,6 @@
 // var computer = require("./computer");
 
 var computer = require("computer");
-// console.log(computer.dd(1,2));
-// console.log(computer.y);
+console.log(computer.dd(1,2));
+console.log(computer.y);
 computer.index.addX(10);
