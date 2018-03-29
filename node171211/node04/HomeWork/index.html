@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="Font-Awesome-3.2.1/css/font-awesome.min.css">
+    <title>Title</title>
+    <style>
+        .row{
+            height: 40px;
+            display: flex;
+            align-items: center;
+        }
+        .row:first-child{
+            font-size: 25px;
+        }
+        .up{
+            border-bottom: 1px solid #DDDDDD;
+        }
+        .up:nth-child(2n + 1) {
+            background: #F9F9F9;
+        }
+        .row:first-child{
+            background: white;
+        }
+        input{
+            border: 0px;
+        }
+        .change{
+            width: 65px;
+            padding-left: 5px;
+            height: 30px;
+            border: 1px solid #CCCCCC;
+            background: #FFFFFF;
+            display: flex;
+            align-items: center;
+        }
+        .new{
+            width: 110px;
+            height: 30px;
+            padding-left: 5px;
+            border: 1px solid white;
+            border-radius: 8px;
+            background: #58BA63;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        .new2{
+            width: 66px;
+            height: 30px;
+            padding-left: 5px;
+            border: 1px solid white;
+            border-radius: 8px;
+            background: #58BA63;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        .newInput{
+            background: #58BA63;
+        }
+        .inputBot{
+            width: 100%;
+            height: 32px;
+            border: 1px solid #CCCCCC;
+            border-radius: 8px;
+        }
+        .gray{
+            background: #EEEEEE;
+        }
+        .col-sm-2{
+            text-align: right;
+        }
+
+
+    </style>
+</head>
+<body>
+<form action="#" method="post">
+    <div class="container">
+        <div class="row up">User</div>
+        <div class="row up">
+            <div class="col-sm-3">编辑</div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3">姓</div>
+            <div class="col-sm-3">名</div>
+        </div>
+        <div class="row up">
+            <div class="col-sm-3">
+                <div class="change">
+                    <span class="icon-pencil"></span>
+                    <input type="button" value="编辑">
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3"></div>
+        </div>
+        <div class="row up">
+            <div class="col-sm-3">
+                <div class="change">
+                    <span class="icon-pencil"></span>
+                    <input type="button" value="编辑">
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3"></div>
+        </div>
+        <div class="row up">
+            <div class="col-sm-3">
+                <div class="change">
+                    <span class="icon-pencil"></span>
+                    <input type="button" value="编辑">
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3"></div>
+        </div>
+        <div class="row up">
+            <div class="new">
+                <span class="icon-user"></span>
+                <input class="newInput" type="submit" value="创建新用户">
+            </div>
+        </div>
+
+    </div>
+</form>
+<form action="/user" method="post">
+    <div class="container">
+        <div class="row bot">
+            <div class="col-sm-3">编辑用户</div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3"></div>
+        </div>
+        <div class="row bot">
+            <div class="col-sm-2">姓</div>
+            <div class="col-sm-10">
+                <input class="inputBot gray" type="text" name="surn">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">名</div>
+            <div class="col-sm-10">
+                <input class="inputBot gray" type="text" name="name">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">密码</div>
+            <div class="col-sm-10">
+                <input class="inputBot" type="text" name="pass1">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">重复密码</div>
+            <div class="col-sm-10">
+                <input class="inputBot" type="text" name="pass2">
+            </div>
+        </div>
+        <div class="row">
+            <div class="new2">
+                <span class="icon-paste"></span>
+                <input class="newInput" type="submit" value="保存">
+            </div>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>

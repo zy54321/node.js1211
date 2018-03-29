@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>node服务</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <form action="/formApi" method="get" enctype="multipart/form-data">
+        用户名: <input type="text" name="username"> <br>
+        密码: <input type="text" name="password"> <br>
+        上传图片: <input type="file" name="fileId"> <br>
+        <input type="submit" value="提交">
+
+    </form>
+    <img src="./upload/5.png" alt="">
+    <div id="time"></div>
+</body>
+<script type="application/javascript">
+    var time = document.getElementById("time");
+    var timer = setInterval(function () {
+        //创建对象 相当于打开一个浏览器
+        var ajax = new XMLHttpRequest();
+        //通过get请求方式打开url地址
+        ajax.open("get","/ajaxApi",true);
+        //提交
+        ajax.send();
+        //当ajax加载完后执行函数
+        ajax.onload = function () {
+            //responseText  ajax请求返回的内容
+            time.innerHTML = ajax.responseText;
+        }
+
+        /*var url = "/ajaxApi";
+        http_get(url,function () {
+            time.innerHTML = this;
+        })*/
+    },1000)
+
+    function http_get(url,callback) {
+        //1,创建Ajax对象 相当于打开一个浏览器
+        var xhr = null;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else {
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhr.onreadystatechange = function () {
+            //4 指解析完成,可以在客服端使用
+            if (xhr.readyState == 4) {
+                callback(xhr.responseText);
+            }
+        }
+        //打开网址
+        xhr.open("get",url,true);
+        //提交
+        xhr.send()
+    }
+</script>
+</html>
