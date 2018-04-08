@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="adduser.css">
+</head>
+<body>
+<div class="wrap">
+    <div class="title">
+        <h1>Users</h1>
+    </div>
+    <div class="user-list">
+        <div class="user-list-title">
+            <span>编辑</span>
+            <div class="box">
+                <span>姓</span>
+                <span>名</span>
+            </div>
+        </div>
+        <ul class="list-group">
+            <!--<li class="list-group-item">-->
+                <!--<div class="bianji">-->
+                    <!--<i class="glyphicon glyphicon-pencil"></i>-->
+                    <!--<span>编辑</span>-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--<span class="data1">张</span>-->
+                    <!--<span class="data2">三</span>-->
+                <!--</div>-->
+            <!--</li>-->
+        </ul>
+    </div>
+    <div class="adduser">
+        <button class="add">
+            <i class="glyphicon glyphicon-user"></i>
+            创建新用户
+        </button>
+    </div>
+    <div class="edit-box">
+        <div class="edit-title">
+            <h2>编辑用户</h2>
+        </div>
+        <form action="/post" method="post" class="form">
+            <p>
+                <span>姓</span>
+                <input type="text" name="xing" required>
+            </p>
+            <p>
+                <span>名</span>
+                <input type="text" name="ming" required>
+            </p>
+            <p>
+                <span>密码</span>
+                <input type="password" name="password" required>
+            </p>
+            <p>
+                <span>重复密码</span>
+                <input type="password" name="repassword" required>
+            </p>
+            <hr>
+            <input type="submit" value="保存" id="submit">
+        </form>
+    </div>
+</div>
+</body>
+
+<script>
+    var oUl = document.getElementsByClassName("list-group")[0];
+
+    ajax_get("/ajax",function (data) {
+        var fileData = data.split(".");
+
+        for (var i = 0; i < fileData.length - 1; i++) {
+            var li = document.createElement("li");
+            li.className = "list-group-item";
+            oUl.appendChild(li);
+
+            var div1 = document.createElement("div");
+            div1.className = "bianji";
+            var div1_i = document.createElement("i");
+            div1_i.className = "glyphicon glyphicon-pencil";
+            var div1_span = document.createElement("span");
+            div1_span.innerHTML = "编辑";
+            div1.appendChild(div1_i);
+            div1.appendChild(div1_span);
+            li.appendChild(div1);
+
+            var div2 = document.createElement("div");
+            var span1 = document.createElement("span");
+            span1.innerHTML = JSON.parse(fileData[i])["xing"];
+            var span2 = document.createElement("span");
+            span2.innerHTML = JSON.parse(fileData[i])["ming"];
+            li.appendChild(div2);
+            div2.appendChild(span1);
+            div2.appendChild(span2);
+        }
+
+    });
+
+
+
+
+    //ajax请求函数
+    function ajax_get(url, fn) {
+        var xhr = null;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else {
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                var theData = xhr.responseText;
+                if (fn) {
+                    fn(theData);
+                }
+            }
+        };
+        xhr.open("get", url, true);
+        xhr.send();
+    }
+</script>
+</html>

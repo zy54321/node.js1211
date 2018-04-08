@@ -13,17 +13,19 @@ var express = require("express");
 //初始化
 var app = express();
 
-// get(path,cb(回调函数));
+// get(path,cb(回调函数));  可以用于复制网页并展示
 app.get("/",(req,res)=>{
     //res.send()
     // res.send("express请求");
-    res.sendFile(__dirname + "/index.html");//绝对路径
+    res.sendFile(__dirname + "/index.html");//__dirname 绝对路径
 });
 
+//收到ajax的请求时返回,返回的内容可以自己定义,取决于大括号内
 app.get("/ajaxApi",(req,res)=>{
     var date = new Date();
     res.send(date.toString());
 });
+
 
 app.get("/article/:id/:name",(req,res)=>{
     // console.log(req.query);
